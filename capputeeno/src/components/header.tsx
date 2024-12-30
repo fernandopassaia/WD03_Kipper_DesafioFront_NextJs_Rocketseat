@@ -1,9 +1,10 @@
-"use client" // todo componente que usa styled components precisa ser renderizado do lado do cliente
+"use client"
 
 import { styled } from "styled-components"
 import { Saira_Stencil_One } from 'next/font/google'
+import { CartControl } from "./cart-control"
+import { PrimaryInputWSearchIcon } from "./primary-input"
 
-// está sendo declarada aqui pois será usada apenas para o LOGO Capputeeno
 const sairaStencil = Saira_Stencil_One({
     weight: ['400'],
     subsets: ['latin']
@@ -13,12 +14,11 @@ interface HeaderProps {
 
 }
 
-// as fontes e tudo mais foram tiradas do Figma
 const TagHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 160px;
+    padding: 12px 24px;
 
     > div {
         display: flex;
@@ -26,23 +26,37 @@ const TagHeader = styled.header`
         justify-content: center;
         gap: 24px;
     }
+
+    @media (min-width: ${props => props.theme.desktopBreakpoint}){
+        padding: 20px 160px;
+    }
 `
 
-//logo-color está no Global.css
 const Logo = styled.a`
     color: var(--logo-color);
     font-weight: 400;
-    font-size: 40px;
+    font-size: 20px;
     line-height: 150%;
+    text-decoration: none;
+
+    @media(min-width: ${props => props.theme.tableBreakpoint}){
+        font-size: 24px;
+    }
+
+    @media(min-width: ${props => props.theme.desktopBreakpoint}){
+        font-size: 40px;
+    }
 `
 
 export function Header(props : HeaderProps){
+    //const {setSearch, search} = useFilter();
+
     return(
         <TagHeader>
-            <Logo className={sairaStencil.className}>Capputeeno</Logo>
-            <div>
-               
-            </div>
+            <Logo className={sairaStencil.className} href="/">Capputeeno</Logo>
+                <PrimaryInputWSearchIcon placeholder="Procurando algo?" />
+                <CartControl/>
+            
         </TagHeader>
     )
 }
