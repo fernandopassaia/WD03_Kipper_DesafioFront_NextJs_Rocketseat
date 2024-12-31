@@ -46,8 +46,10 @@ const FilterItem = styled.li<FilterItemProps>`
 `
 
 export function FilterByType(){
+    // setType irá chamar o useFilter
     const { type, setType } = useFilter();
 
+    // quando clicar será chamado o handleChangeType que irá chamar o setType
     const handleChangeType = (value: FilterType) => {
         setType(value)
     }
