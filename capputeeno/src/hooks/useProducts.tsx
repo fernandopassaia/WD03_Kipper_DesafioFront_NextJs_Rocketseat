@@ -13,7 +13,6 @@ const fetcher = (query: string): AxiosPromise<ProductsFetchResponse> => {
 }
 
 export function useProducts(){
-  console.log('API_URL Products', API_URL);
     const { type, priority, search } = useFilter()
     const searchDeferred = useDeferredValue(search)
     const query = mountQuery(type, priority)
@@ -21,11 +20,9 @@ export function useProducts(){
       queryFn: () => fetcher(query),
       queryKey: ['products', type, priority]
     })
-
-    console.log('Data', data);
+    
     const products =  data?.data?.data?.allProducts
     const filteredProducts = products?.filter(product => product.name.toLowerCase().includes(searchDeferred.toLowerCase()))
-    console.log('filteredProducts', filteredProducts);
     return {
       data: filteredProducts
     }
