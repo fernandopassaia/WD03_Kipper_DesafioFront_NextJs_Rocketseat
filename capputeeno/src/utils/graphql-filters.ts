@@ -1,6 +1,7 @@
 import { FilterType } from "@/types/filter-types";
 import { PriorityTypes } from "@/types/priority-types";
 
+// NOTA - no Notion tem um screenshot mostrando como é possível fazer Queries em GraphQL
 export function getCategoryByType(type: FilterType){
     if(type == FilterType.MUG) return "mugs"
     if(type == FilterType.SHIRT) return "t-shirts"
