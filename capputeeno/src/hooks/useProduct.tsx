@@ -23,7 +23,7 @@ export function useProduct(id: string){
         queryFn: () => fetcher(id),
         queryKey: ['product', id],
         enabled: !!id, //só quero que essa query seja disparada quando houver ID
-        staleTime: 1000 * 60 * 5
+        staleTime: 1000 * 60 * 5 // habilita o cache de 5 minutos
     });
 
     return {
