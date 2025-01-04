@@ -112,19 +112,19 @@ export default function ProductFunc({ searchParams }: { searchParams: { id: stri
     
     const handleAddToCart = () => {
         const cartItems = localStorage.getItem('cart-items');
-        if(cartItems) {
+        if(cartItems) { //se já houverem itens no carrinho (local-storage) preciso atualizar
             const cartItemsArray = JSON.parse(cartItems);
 
             const existingProductIndex = cartItemsArray.findIndex((item: { id: string; }) => item.id === searchParams.id);
 
-            if(existingProductIndex != -1){
+            if(existingProductIndex != -1){ //se achar o produto, atualizo a quantidade
                 cartItemsArray[existingProductIndex].quantity += 1;
-            } else {
+            } else { //senão eu adiciono novo item
                 cartItemsArray.push({ ...data, quantity: 1, id: searchParams.id })
             }
 
             localStorage.setItem('cart-items', JSON.stringify(cartItemsArray));
-        } else {
+        } else { // se nao houver carrinho, eu crio o carrinho
             const newCart = [{ ...data, quantity: 1, id: searchParams.id }]
             localStorage.setItem('cart-items', JSON.stringify(newCart));
         }
