@@ -4,7 +4,7 @@ import { useProducts } from "@/hooks/useProducts"
 import { ProductCard } from "./product-card";
 import { styled } from "styled-components";
 
-// formata os produtos em 4 colunas
+//formata os produtos em 4 colunas
 const ListContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, 256px);
@@ -24,6 +24,7 @@ export function ProductsList(){
                 title={product.name}
                 price={product.price_in_cents}
                 image={product.image_url}
+                id={product.id}
             />
             )}
     </ListContainer>

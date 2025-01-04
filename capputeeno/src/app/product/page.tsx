@@ -78,7 +78,6 @@ const ProductInfo = styled.div`
         margin-top: 12px;
     }
 
-    /* pega apenas o segundo span (preço - negrito, fonte maior)*/
     span:nth-of-type(2){
         font-weight: 600;
         font-size: 20px;
@@ -107,17 +106,16 @@ const ProductInfo = styled.div`
         }
     }
 `
-
 // recebe o ID do produto
 export default function Product({ searchParams }: { searchParams: { id: string }}) {
     const { data } = useProduct(searchParams.id);
     
     const handleAddToCart = () => {
-        let cartItems = localStorage.getItem('cart-items');
+        const cartItems = localStorage.getItem('cart-items');
         if(cartItems) {
-            let cartItemsArray = JSON.parse(cartItems);
+            const cartItemsArray = JSON.parse(cartItems);
 
-            let existingProductIndex = cartItemsArray.findIndex((item: { id: string; }) => item.id === searchParams.id);
+            const existingProductIndex = cartItemsArray.findIndex((item: { id: string; }) => item.id === searchParams.id);
 
             if(existingProductIndex != -1){
                 cartItemsArray[existingProductIndex].quantity += 1;
