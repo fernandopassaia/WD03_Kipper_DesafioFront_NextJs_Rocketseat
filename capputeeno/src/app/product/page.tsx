@@ -107,7 +107,7 @@ const ProductInfo = styled.div`
     }
 `
 // recebe o ID do produto
-export default function ProductFunc({ searchParams }: { searchParams: { id: string }}) {
+export default function AddProductToCart({ searchParams }: { searchParams: { id: string }}) {
     const { data } = useProduct(searchParams.id);
     
     const handleAddToCart = () => {
