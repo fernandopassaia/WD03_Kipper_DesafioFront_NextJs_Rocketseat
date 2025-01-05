@@ -75,7 +75,7 @@ const Item = styled.li`
         }
     }
 `
-
+// dropdown para selecionar a quantidade que você quer adicionar no carrinho
 const SelectQuantity = styled.select`
     padding: 8px;
     border: 1.5px solid var(--border-color);
